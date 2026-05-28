@@ -1,4 +1,4 @@
-package br.megazord7563.lib.telemetryManager;
+package br.megazord7563;
 
 public enum Priority {
     LOW(10),

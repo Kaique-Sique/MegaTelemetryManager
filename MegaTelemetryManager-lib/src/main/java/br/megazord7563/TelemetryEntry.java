@@ -1,4 +1,4 @@
-package br.megazord7563.lib.telemetryManager;
+package br.megazord7563;
 
 import java.lang.reflect.Field;
 import java.util.function.Supplier;
