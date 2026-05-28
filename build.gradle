@@ -10,7 +10,6 @@ repositories {
     mavenCentral()
     maven { url 'https://frcmaven.wpi.edu/release' }
 }
-
 dependencies {
     implementation 'edu.wpi.first.ntcore:ntcore-java:2025.+'
     implementation 'edu.wpi.first.wpilibj:wpilibj2-java:2025.+'
