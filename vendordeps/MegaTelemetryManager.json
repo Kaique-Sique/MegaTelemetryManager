@@ -1,0 +1,25 @@
+{
+  "fileName": "MegaTelemetryManager.json",
+  "name": "MegaTelemetryManager",
+  "version": "1.0.0",
+  "frcYear": "2026",
+
+  "uuid": "b7d7f3f4-9e6e-4d11-9f34-5a5f5c3c1234",
+
+  "mavenUrls": [
+    "https://jitpack.io"
+  ],
+
+  "jsonUrl": "https://raw.githubusercontent.com/Kaique-Sique/MegaTelemetryManager/main/vendordeps/MegaTelemetryManager.json",
+
+  "javaDependencies": [
+    {
+      "groupId": "com.github.Kaique-Sique",
+      "artifactId": "MegaTelemetryManager",
+      "version": "v1.0.0"
+    }
+  ],
+
+  "jniDependencies": [],
+  "cppDependencies": []
+}
