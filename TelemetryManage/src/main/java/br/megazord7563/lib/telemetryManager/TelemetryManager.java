@@ -10,7 +10,6 @@ public class TelemetryManager {
 
     private static TelemetryManager instance;
 
-    // ✅ lista de TelemetryEntry, não de Telemetry
     private final Map<Priority, List<TelemetryEntry>> entries = new HashMap<>();
     private final Map<Priority, Double> lastPublishTime = new HashMap<>();
 
@@ -30,7 +29,7 @@ public class TelemetryManager {
         for (Field field : inputsObject.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Telemetry.class)) {
 
-                // ✅ lê a annotation para pegar priority e key
+                //lê a annotation para pegar priority e key
                 Telemetry annotation = field.getAnnotation(Telemetry.class);
                 field.setAccessible(true);
 
@@ -39,7 +38,7 @@ public class TelemetryManager {
                       + "/" + capitalize(field.getName())
                     : annotation.key();
 
-                // ✅ cria TelemetryEntry com os dados do field
+                // cria TelemetryEntry com os dados do field
                 entries.get(annotation.priority())
                        .add(new TelemetryEntry(field, inputsObject, key));
             }
@@ -54,8 +53,8 @@ public class TelemetryManager {
             if (timestamp - last >= interval) {
                 lastPublishTime.put(priority, timestamp);
 
-                // ✅ itera sobre TelemetryEntry
                 for (TelemetryEntry entry : entries.get(priority)) {  // separa por prioridade os dados a serem publicados
+                    //System.out.println("[TelemetryManager] "+ timestamp+"Publishing " + priority + " data...");
                     entry.publish();
                 }
             }

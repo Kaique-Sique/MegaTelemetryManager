@@ -21,6 +21,9 @@ public class Robot extends TimedRobot {
 
   private final RobotContainer m_robotContainer;
 
+  TestInputs inputs = new TestInputs();
+  private double timer = 0.0;
+   
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -30,8 +33,8 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
-    TestInputs inputs = new TestInputs();
-    TelemetryManager.getInstance().registerInputs(inputs);
+    
+     TelemetryManager.getInstance().registerInputs(inputs);
 
     // simula valores mudando
     inputs.speed = 3.14;
@@ -52,6 +55,10 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+
+     // simula valores mudando com seno — vai oscilar no gráfico
+    timer += 0.02;
+    inputs.speed = timer;  // oscila entre -10 e 10
 
     TelemetryManager.getInstance().periodic(Timer.getFPGATimestamp());
   }
