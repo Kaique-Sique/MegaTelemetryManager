@@ -1,21 +1,21 @@
 plugins {
     id 'java'
-    id 'maven-publish' 
+    id 'maven-publish'
 }
 
-group = 'com.github.Kaique-Sique' 
+group = 'com.github.Kaique-Sique'
 version = '1.0.0'
 
 repositories {
     mavenCentral()
     maven { url 'https://frcmaven.wpi.edu/release' }
 }
+
 dependencies {
-    implementation 'edu.wpi.first.ntcore:ntcore-java:2025.+'
-    implementation 'edu.wpi.first.wpilibj:wpilibj2-java:2025.+'
+    // ← só o ntcore, versão exata em vez de 2025.+
+    implementation 'edu.wpi.first.ntcore:ntcore-java:2025.3.1'
 }
 
-// gera o jar da biblioteca
 publishing {
     publications {
         maven(MavenPublication) {
