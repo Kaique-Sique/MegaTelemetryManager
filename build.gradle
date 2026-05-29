@@ -11,6 +11,11 @@ repositories {
     maven { url 'https://frcmaven.wpi.edu/release' }
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 dependencies {
     // ← só o ntcore, versão exata em vez de 2025.+
     implementation 'edu.wpi.first.ntcore:ntcore-java:2025.3.1'
