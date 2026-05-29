@@ -10,7 +10,7 @@
     "https://jitpack.io"
   ],
 
-  "jsonUrl": "https://raw.githubusercontent.com/Kaique-Sique/MegaTelemetryManager/main/vendordeps/MegaTelemetryManager.json",
+  "jsonUrl": "https://raw.githubusercontent.com/Kaique-Sique/MegaTelemetryManager/MegaTelemetryManager/vendordeps/MegaTelemetryManager.json",
 
   "javaDependencies": [
     {
