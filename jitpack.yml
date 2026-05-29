@@ -4,5 +4,5 @@ before_install:
   - sdk install java 17.0.10-tem
   - sdk use java 17.0.10-tem
 install:
-  - gradle wrapper
-  - ./gradlew clean assemble publishToMavenLocal
+  - gradle wrapper --gradle-version 7.6
+  - ./gradlew clean assemble publishToMavenLocal -Pgroup=com.github.Kaique-Sique -Pversion=v1.0.3
