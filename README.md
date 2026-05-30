@@ -40,7 +40,7 @@ Priority.LOW    → 10 Hz  (every 100ms)
 
 ## Installation
 
-Copy the four files into your robot project under `src/main/java/br/megazord7563/`:
+Copy the four files into your robot project under `src/main/java/frc/`:
 
 ```
 TelemetryManager.java
