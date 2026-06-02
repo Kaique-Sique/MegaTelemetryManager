@@ -10,5 +10,6 @@ import java.lang.annotation.ElementType;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Telemetry {
     Priority priority() default Priority.MEDIUM;
-    String key() default "";  // auto-gerado se vazio
+    String basePath() default "";  // ← adiciona isso
+    String key() default "";
 }

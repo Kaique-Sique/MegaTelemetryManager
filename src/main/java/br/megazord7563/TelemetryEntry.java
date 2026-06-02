@@ -21,8 +21,8 @@ import edu.wpi.first.networktables.StringPublisher;
 public class TelemetryEntry {
 
     private final String key;
-    private final Supplier<Object> valueSupplier; // lê o field atual sem reflection
-    private final NTPublisherWrapper publisher;   // publica no NT
+    private final Supplier<Object> valueSupplier;
+    private final NTPublisherWrapper publisher;
 
     public TelemetryEntry(Field field, Object owner, String key) {
         this.key = key;
@@ -38,15 +38,29 @@ public class TelemetryEntry {
             }
         };
 
-        // detecta o tipo e cria o publisher NT correto
-        this.publisher = createPublisher(key, field.getType());
+        // tenta criar o publisher — captura erros sem quebrar o robô
+        NTPublisherWrapper temp;
+        try {
+            temp = createPublisher(key, field.getType());
+        } catch (Exception e) {
+            System.err.println("[TelemetryManager] Falha ao criar publisher: "
+                + key + " tipo: " + field.getType().getSimpleName()
+                + " erro: " + e.getMessage());
+            temp = value -> {};
+        }
+        this.publisher = temp;
     }
 
     // chamado pelo TelemetryManager no periodic — zero reflection aqui
     public void publish() {
-        Object value = valueSupplier.get();
-        if (value != null) {
-            publisher.publish(value);
+        try {
+            Object value = valueSupplier.get();
+            if (value != null) {
+                publisher.publish(value);
+            }
+        } catch (Exception e) {
+            System.err.println("[TelemetryManager] Falha ao publicar: "
+                + key + " erro: " + e.getMessage());
         }
     }
 
@@ -154,8 +168,7 @@ public class TelemetryEntry {
                 });
             };
 
-        // --- Tipo não suportado — avisa mas não quebra o robô ---
-        } else {
+        }  else {
             System.err.println("[TelemetryManager] Tipo não suportado: "
                 + type.getSimpleName() + " no campo '" + key + "' — ignorando.");
             return value -> {};
